@@ -1,0 +1,3 @@
+[submodule "client/airbnb-clone-booking-module"]
+	path = client/airbnb-clone-booking-module
+	url = https://github.com/BedandBreakfastClub/airbnb-clone-booking-module.git
