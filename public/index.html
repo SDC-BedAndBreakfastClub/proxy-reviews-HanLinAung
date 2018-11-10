@@ -9,22 +9,22 @@
     <div id="bookings"></div>
     <div id="reviews"></div>
     <div id="similar-listings"></div>
-    <script src="/lib/react.development.js"></script>
-    <script src="/lib/react-dom.development.js"></script>
-    <script src="http://localhost:3001/bundle.js"></script>
-    <script src="http://localhost:3002/bundle.js"></script>
-    <script src="http://localhost:3003/dist/bundle.js"></script>
-    <script src="http://localhost:3004/bundle.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="http://reviews-env-1.zha7ejydzv.us-west-1.elasticbeanstalk.com/bundle.js"></script>
+    <script src="http://13.57.190.62/bundle.js"></script>
+    <script src="http://54.193.61.151:3003/dist/bundle.js"></script>
+    <script src="http://34.220.178.216/bundle.js"></script>
     <!-- see: https://reactjs.org/docs/react-without-jsx.html -->
     <script>
       ReactDOM.render(
         React.createElement(PhotoModule),
         document.getElementById('photos')
       );
-      // ReactDOM.render(
-      //   React.createElement(Booking),
-      //   document.getElementById('bookings')
-      // );
+      ReactDOM.render(
+        React.createElement(Booking),
+        document.getElementById('bookings')
+      );
       ReactDOM.render(
         React.createElement(reviewModule),
         document.getElementById('reviews')
