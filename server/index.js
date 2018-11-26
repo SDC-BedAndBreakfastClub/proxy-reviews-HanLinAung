@@ -1,30 +1,29 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
+const express = require("express");
+const morgan = require("morgan");
+const proxy = require("http-proxy-middleware");
+const path = require("path");
+const newrelic = require("newrelic");
 const app = express();
-const port = process.env.PORT || 8081;
 
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set("port", process.env.PORT || 8081);
 
-app.get('/', (req, res) => {
-  res.redirect('/rooms/3');
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "../public/")));
+app.locals.newrelic = newrelic;
+
+app.get("/", (req, res) => {
+  res.redirect("/");
 });
 
-app.get('/rooms/:listingId/', (req, res) => {
-  const options = {
-    root: path.join(__dirname, '..', 'public/'),
-  };
-  res.sendFile('index.html', options, (err) => {
-    if (err) {
-      console.error(err);
-      res.sendStatus(500);
-    } else {
-      console.log('Index sent');
-    }
-  });
+app.use(
+  "/api/rooms/:listingId/reviews",
+  proxy({ target: "http://127.0.0.1:3000/" })
+);
+app.get("/api/rooms/:listingId/reviews", (req, res) => {
+  const reviewPath = path.join(__dirname, "../public/");
+  res.sendFile(reviewPath);
 });
 
-app.listen(port,  () => {
-  console.log(`server running at: http://localhost:${port}`);
+app.listen(8081, () => {
+  console.log(`server running at: http://localhost:8081`);
 });

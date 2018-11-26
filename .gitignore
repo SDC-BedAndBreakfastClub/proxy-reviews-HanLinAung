@@ -4,7 +4,7 @@
 ## NPM ##
 npm
 npm-debug.log
-node_modules/
+node_modules
 
 pids
 *.pid
@@ -24,3 +24,4 @@ coverage
 build/
 dist/
 
+newrelic.js
