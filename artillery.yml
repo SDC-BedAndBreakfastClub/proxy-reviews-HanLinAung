@@ -1,0 +1,18 @@
+config:
+  target: "http://127.0.0.1:8081"
+  phases:
+    - duration: 60
+      arrivalRate: 300
+  defaults:
+    headers:
+      x-my-service-auth: "987401838271002188298567"
+  variables:
+    listings:
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+scenarios:
+  - flow:
+      - get:
+          url: "/api/rooms/{{listings}}/reviews"
