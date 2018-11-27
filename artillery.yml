@@ -1,18 +1,21 @@
 config:
-  target: "http://127.0.0.1:8081"
+  target: "http://54.183.93.130/"
   phases:
-    - duration: 60
-      arrivalRate: 300
-  defaults:
-    headers:
-      x-my-service-auth: "987401838271002188298567"
-  variables:
-    listings:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
+    - duration: 10
+      arrivalRate: 1000
+    - duration: 10
+      arrivalRate: 1000
+  tls:
+    rejectUnauthorized: false
 scenarios:
   - flow:
       - get:
-          url: "/api/rooms/{{listings}}/reviews"
+          url: "/api/rooms/1/reviews"
+      - post:
+          url: "/api/rooms/1/reviews"
+          json:
+            author: "Jawad"
+            date: "October 2018"
+            body: "I hate every room that is available right now!!"
+            image: "https://s3.amazonaws.com/uifaces/faces/twitter/chrisvanderkooi/128.jpg"
+            flagged: "false"
