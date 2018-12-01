@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  reservation:
+    image: hanlinaunghack/sdcreviewproxy:latest
+    ports:
+      - "80:3000"

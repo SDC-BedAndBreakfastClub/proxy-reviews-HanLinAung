@@ -17,13 +17,13 @@ app.get("/", (req, res) => {
 
 app.use(
   "/api/rooms/:listingId/reviews",
-  proxy({ target: "http://127.0.0.1:3000/" })
+  proxy({ target: "http://13.57.17.28/" })
 );
 app.get("/api/rooms/:listingId/reviews", (req, res) => {
   const reviewPath = path.join(__dirname, "../public/");
   res.sendFile(reviewPath);
 });
 
-app.listen(8081, () => {
-  console.log(`server running at: http://localhost:8081`);
+app.listen(3000, () => {
+  console.log(`server running at: http://localhost:3000`);
 });
